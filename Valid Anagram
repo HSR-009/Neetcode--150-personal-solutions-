@@ -1,4 +1,4 @@
-class Solution:
+class Solution1:
     def isAnagram(self, s: str, t: str) -> bool:
         if len(s)!=len(t):
             return False
@@ -10,7 +10,35 @@ class Solution:
                 return False
         return True
 
-#Atlernate sol
-# class Solution:
-#     def isAnagram(self, s: str, t: str) -> bool:
-#         return sorted(s) == sorted(t)
+class Solution2:
+    def isAnagram(self, s: str, t: str) -> bool:
+        return sorted(s) == sorted(t)
+
+
+class Solution3:
+    def isAnagram(self, s: str, t: str) -> bool:
+        return Counter(s)==Counter(t)
+
+class Solution4:
+    def isAnagram(self, s: str, t: str) -> bool:
+        if len(s)!=len(t):
+            return False
+        freq_s={}
+        freq_t={}
+        
+        for c in s:
+            freq_s[c]=freq_s.get(c,0)+1
+        for d in t:
+            freq_t[d]=freq_t.get(d,0)+1
+
+        return freq_s==freq_t
+
+
+
+
+
+
+
+
+
+
