@@ -1,0 +1,30 @@
+class Solution1:
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        groups={}
+        for s in strs:
+            key="".join(sorted(s))
+            if key not in groups:
+                groups[key]=[]
+            groups[key].append(s)
+        return list(groups.values())
+
+class Solution2:
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        groups = defaultdict(list)
+
+        for s in strs:
+            key = "".join(sorted(s))
+            groups[key].append(s)
+
+        return list(groups.values())
+
+class Solution3:
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        groups=defaultdict(list)
+        for s in strs:
+            freq={}
+            for c in s:
+                freq[c]=freq.get(c,0)+1
+            key=tuple(sorted(freq.items()))
+            groups[key].append(s)
+        return list(groups.values())
